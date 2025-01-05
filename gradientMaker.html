@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Generator</title>
+    <style>
+
+        html, body{
+            background-color: #14213d;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1{
+            
+            color: white;
+            text-align: center;
+            font-weight: 900;
+            font-stretch:wider;
+        }
+
+        p{
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+        
+
+        .grid-container {
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 5%;
+            width: 100%;
+            
+
+        }
+
+        .grad-container {
+            height: 450px;
+            width: 550px;
+            border-radius: 10px;
+
+
+        }
+
+        .inputContainer {
+            width: 550px;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .inputValues {
+            padding: 50px;
+        }
+
+        .generateBtn{
+            padding: 10px;
+            background-color: #e63946 ;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .generateBtn:hover{
+            box-shadow: .2px .2px 8px white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Gradient Generator</h1>
+    <p>A Tool to generate beautiful gradients! </p>
+
+    <div class="grid-container">
+
+        <div class="grad-container" id="gradContainer"></div>
+
+        <div class="inputContainer">
+            <div class="inputValues">
+
+                <h3>Select the colours...</h3>
+
+                <label for="color-1" class="color1">Color 1: </label>
+                <input type="color" id="color-1">
+                <br><br>
+                <label for="color-2" class="color2">Color 2: </label>
+                <input type="color" id="color-2">
+
+                <br> <br> <br>
+                <label for="gradientType">Select your desired Gradient type:</label>
+                <select id="gradientType">
+                    <option value="linear">Linear Gradient</option>
+                    <option value="radial">Radial Gradient</option>
+                    <option value="conic">Conic Gradient</option>
+                </select>
+                <br> <br>
+                <button class="generateBtn" onclick="LGradient();">Generate Gradient!</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        document.getElementById('gradContainer').style.backgroundColor = 'black';
+        function LGradient() {
+
+            c1 = document.getElementById('color-1').value;
+            c2 = document.getElementById('color-2').value;
+            type1 = document.getElementById('gradientType').value;
+            console.log(c1, c2, type1);
+            switch (type1) {
+                case type1 = "linear": document.getElementById('gradContainer').style.backgroundImage = `linear-gradient(${c1},${c2})`;
+                    break;
+                case type1 = "radial": document.getElementById('gradContainer').style.backgroundImage = `radial-gradient(${c1},${c2})`;
+                    break;
+                case type1 = "conic": document.getElementById('gradContainer').style.backgroundImage = `conic-gradient(${c1},${c2})`;
+                    break;
+                default: document.getElementById('gradContainer').style.backgroundColor = 'black';
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
